@@ -16,7 +16,7 @@
                         <h3><a href="projet.html"><?php echo $projet['titre'];?></a></h3>
                         <p class="ct-byline">par <a href="#"><?php echo $projet['pseudo']; ?></a> · <?php echo $projet['dateCreation']; ?></p>
                         <p>
-                            <?php echo $projet['resume'];?>
+                            <?php echo \Core\Helpers\truncate($projet['resume']);?>
                         </p>
                         <a class="ct-btn ct-btn--primary ct-btn--sm" href="projet.html">Voir le projet</a>
                     </div>
