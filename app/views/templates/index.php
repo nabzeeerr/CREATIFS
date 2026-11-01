@@ -9,13 +9,14 @@
     <?php include_once '../app/views/templates/partials/_nav.php'?>
 
     <!-- Bandeau d'intro -->
-    <?php include_once '../app/views/templates/partials/_header.php'?>
+    <?php if (!isset($_GET['projets'])) : ?>
+    <?php include_once '../app/views/templates/partials/_header.php'; ?>
+    <?php endif; ?>
 
     <!-- Contenu -->
     <div class="container ct-content-wrap">
         <?php echo $content; ?>
     </div>
-    <!-- /.container -->
 
     <!-- Footer -->
     <?php include_once '../app/views/templates/partials/_footer.php'?>
