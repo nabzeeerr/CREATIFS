@@ -25,7 +25,7 @@
             <li class="nav-item active">
               <a class="nav-link" href="index.html">Les projets</a>
             </li>
-            <?php if (!isset($_GET['form'])) : ?>
+            <?php if (!isset($_GET['form']) && !isset($_GET['edit'])) : ?>
               <li class="nav-item">
                 <a class="ct-btn ct-btn--primary ct-btn--sm" href="index.html">
                   <svg class="ct-scissors" style="width:16px;height:16px" viewBox="0 0 24 24" aria-hidden="true">

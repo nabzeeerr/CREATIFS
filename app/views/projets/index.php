@@ -1,4 +1,3 @@
-
 <div class="row">
 
     <!-- Colonne principale -->
@@ -11,16 +10,13 @@
             · <?php echo $projet['dateCreation']; ?>
         </p>
 
-        <div class="mb-4">
-            <a href="#" class="ct-btn ct-btn--primary">
-                Éditer le projet
-            </a>
+        <a href="?edit&id=<?php echo $projet['id']; ?>" class="ct-btn ct-btn--primary">Éditer le projet</a>
 
             <a href="#" class="ct-btn ct-btn--danger">
                 Supprimer le projet
             </a>
-        </div>
 
+        <div style="margin-top: 1.5rem;"></div>
         <article class="ct-card">
             <div class="row">
                 <div class="col-md-6">
@@ -62,5 +58,4 @@
     <div class="col-lg-4">
         <?php include '../app/views/templates/partials/_aside.php'; ?>
     </div>
-
 </div>

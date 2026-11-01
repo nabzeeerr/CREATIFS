@@ -43,3 +43,18 @@ function add(PDO $connexion, string $titre, string $resume, string $texte, strin
 
     return (int) $connexion->lastInsertId();
 }
+
+function update(PDO $connexion, int $id, string $titre, string $resume, string $texte, string $image, int $creatif): void {
+
+    $sql = "UPDATE projets
+            SET titre = :titre,
+                resume = :resume,
+                texte = :texte,
+                image = :image,
+                creatif = :creatif
+            WHERE id = :id;";
+
+    $rs = $connexion->prepare($sql);
+
+    $rs->execute([':titre' => $titre, ':resume' => $resume, ':texte' => $texte, ':image' => $image, ':creatif' => $creatif, ':id' => $id]);
+}

@@ -9,7 +9,7 @@
     <?php include_once '../app/views/templates/partials/_nav.php'?>
 
     <!-- Bandeau d'intro -->
-    <?php if (!isset($_GET['projets']) && !isset($_GET['form'])) : ?>
+    <?php if (!isset($_GET['projets']) && !isset($_GET['form']) && !isset($_GET['edit'])) : ?>
     <?php include_once '../app/views/templates/partials/_header.php'; ?>
     <?php endif; ?>
 
