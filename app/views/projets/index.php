@@ -12,7 +12,7 @@
 
         <a href="?edit&id=<?php echo $projet['id']; ?>" class="ct-btn ct-btn--primary">Éditer le projet</a>
 
-            <a href="#" class="ct-btn ct-btn--danger">
+            <a href="?delete&id=<?php echo $projet['id']; ?>" class="ct-btn ct-btn--danger" onclick="return confirm('Tu es sûr de vouloir supprimer ce projet ?');">
                 Supprimer le projet
             </a>
 

@@ -26,6 +26,14 @@ elseif (isset($_GET['edit'])) :
     include_once '../app/controllers/projetsController.php';
     \App\Controllers\ProjetsController\editAction($connexion);
 
+// ROUTE DE SUPPRESSION
+// PATTERN : /?delete&id=[id]
+// CTRL : ProjetsController
+// ACTION : deleteAction
+elseif (isset($_GET['delete'])) :
+    include_once '../app/controllers/projetsController.php';
+    \App\Controllers\ProjetsController\deleteAction($connexion);
+
 // ROUTE PAR DEFAUT
 // PATTERN: /
 // CTRL: pagesController

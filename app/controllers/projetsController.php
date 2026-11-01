@@ -158,3 +158,15 @@ function editAction(PDO $connexion) {
     include '../app/views/projets/form.php';
     $content = ob_get_clean();
 }
+
+function deleteAction(PDO $connexion) {
+
+    include_once '../app/models/projetsModel.php';
+
+    $id = (int) $_GET['id'];
+
+    \App\Models\ProjetsModel\delete($connexion, $id);
+
+    header('Location: ?projets');
+    exit;
+}

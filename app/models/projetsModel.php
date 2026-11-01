@@ -58,3 +58,16 @@ function update(PDO $connexion, int $id, string $titre, string $resume, string $
 
     $rs->execute([':titre' => $titre, ':resume' => $resume, ':texte' => $texte, ':image' => $image, ':creatif' => $creatif, ':id' => $id]);
 }
+
+function delete(PDO $connexion, int $id): void {
+
+    // Supprimer les associations avec les tags
+    $sql = "DELETE FROM projets_has_tags WHERE projet = :id;";
+    $rs = $connexion->prepare($sql);
+    $rs->execute([':id' => $id]);
+
+    // Supprimer le projet
+    $sql = "DELETE FROM projets WHERE id = :id;";
+    $rs = $connexion->prepare($sql);
+    $rs->execute([':id' => $id]);
+}
