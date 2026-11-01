@@ -9,8 +9,8 @@
     <title>CREA'TIFS - Design capill'Hair - <?php echo $title; ?></title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/CREATIFS/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <!-- Polices Bungee + Poppins : auto-hébergées, voir css/creatifs.css -->
 
     <!-- Styles CREA'TIFS -->
-    <link href="../template/css/creatifs.css" rel="stylesheet" />
+    <link href="/CREATIFS/template/css/creatifs.css" rel="stylesheet" />

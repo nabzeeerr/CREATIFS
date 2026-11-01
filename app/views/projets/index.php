@@ -10,11 +10,16 @@
             · <?php echo $projet['dateCreation']; ?>
         </p>
 
-        <a href="?edit&id=<?php echo $projet['id']; ?>" class="ct-btn ct-btn--primary">Éditer le projet</a>
+        <a href="/CREATIFS/public/?edit&id=<?php echo $projet['id']; ?>"
+            class="ct-btn ct-btn--primary">
+            Éditer le projet
+        </a>
 
-            <a href="?delete&id=<?php echo $projet['id']; ?>" class="ct-btn ct-btn--danger" onclick="return confirm('Tu es sûr de vouloir supprimer ce projet ?');">
-                Supprimer le projet
-            </a>
+        <a href="/CREATIFS/public/?delete&id=<?php echo $projet['id']; ?>"
+            class="ct-btn ct-btn--danger"
+            onclick="return confirm('Tu es sûr de vouloir supprimer ce projet ?');">
+            Supprimer le projet
+        </a>
 
         <div style="margin-top: 1.5rem;"></div>
         <article class="ct-card">
@@ -22,7 +27,7 @@
                 <div class="col-md-6">
                     <img
                         class="img-fluid mb-3 mb-md-0"
-                        src="../template/images/<?php echo $projet['image']; ?>"
+                        src="/CREATIFS/template/images/<?php echo $projet['image']; ?>"
                         alt="<?php echo $projet['titre']; ?>"
                     />
                 </div>

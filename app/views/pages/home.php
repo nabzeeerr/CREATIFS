@@ -8,17 +8,17 @@
                 <article class="ct-card">
                     <div class="row">
                     <div class="col-md-4">
-                        <a href="projet.html">
-                        <img class="img-fluid mb-3 mb-md-0" src="../template/images/<?php echo $projet['image'];?>" alt="<?php echo $projet['titre'];?>" />
+                        <a href="projects/<?php echo $projet['id']; ?>/<?php echo \Core\Helpers\slugify($projet['titre']); ?>.html">
+                        <img class="img-fluid mb-3 mb-md-0" src="/CREATIFS/template/images/<?php echo $projet['image'];?>" alt="<?php echo $projet['titre'];?>" />
                         </a>
                     </div>
                     <div class="col-md-8">
-                        <h3><a href="projet.html"><?php echo $projet['titre'];?></a></h3>
+                        <h3><a href="projects/<?php echo $projet['id']; ?>/<?php echo \Core\Helpers\slugify($projet['titre']); ?>.html"><?php echo $projet['titre'];?></a></h3>
                         <p class="ct-byline">par <a href="#"><?php echo $projet['pseudo']; ?></a> · <?php echo $projet['dateCreation']; ?></p>
                         <p>
                             <?php echo \Core\Helpers\truncate($projet['resume']);?>
                         </p>
-                        <a class="ct-btn ct-btn--primary ct-btn--sm" href="projet.html">Voir le projet</a>
+                        <a class="ct-btn ct-btn--primary ct-btn--sm" href="projects/<?php echo $projet['id']; ?>/<?php echo \Core\Helpers\slugify($projet['titre']); ?>.html">Voir le projet</a>
                     </div>
                     </div>
                 </article>

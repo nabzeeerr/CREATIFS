@@ -2,13 +2,12 @@
 // ROUTER PRINCIPAL
 
 // ROUTE DES PROJETS 
-// PATTERN : /?projets
+// PATTERN : /?projets&id=[id]
 // CTRL : projetsController
 // ACTION : indexAction
-if (isset($_GET['projets'])) :
+if (isset($_GET['projets']) && isset($_GET['id'])) :
     include_once '../app/controllers/projetsController.php';
     \App\Controllers\ProjetsController\indexAction($connexion);
-
 
 // ROUTE DU FORM 
 // PATTERN : /?form

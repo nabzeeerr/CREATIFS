@@ -11,4 +11,23 @@ function truncate (string $string, int $lg_max = 100) : string {
     return $string;
 }
     
+function slugify(string $string): string {
+
+    $string = strtolower($string);
+
+    $string = str_replace(
+        [' ', '.', '!', '?', "'", ';'],
+        '-',
+        $string
+    );
+
+    $string = str_replace(
+        ['é', 'è', 'ê', 'à', 'ç', 'â'],
+        ['e', 'e', 'e', 'a', 'c', 'a'],
+        $string
+    );
+
+    return $string;
+}
+
 ?>

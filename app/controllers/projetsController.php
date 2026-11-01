@@ -43,26 +43,22 @@ function addAction(PDO $connexion) {
         $texte = $_POST['texte'];
         $creatif = (int) $_POST['creatif'];
 
-        if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
-            echo "Erreur lors de l'envoi de l'image.";
-            exit;
-        }
+        $image = '';
 
-        $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
-        $image = uniqid() . '.' . $extension;
+        if ($_FILES['image']['error'] === UPLOAD_ERR_OK) {
 
-        $type = $_FILES['image']['type'];
+            $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+            $image = uniqid() . '.' . $extension;
 
-        if (in_array($type, ['image/jpeg', 'image/png', 'image/webp'])) {
+            $type = $_FILES['image']['type'];
 
-            $destination = '../template/images/' . $image;
-
-            move_uploaded_file($_FILES['image']['tmp_name'], $destination);
-
-        } 
-        else {
-            echo "Le fichier envoyé n'est pas une image.";
-            exit;
+            if (in_array($type, ['image/jpeg', 'image/png', 'image/webp'])) {
+                $destination = '../template/images/' . $image;
+                move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+            } else {
+                echo "Le fichier envoyé n'est pas une image.";
+                exit;
+            }
         }
 
         $id = \App\Models\ProjetsModel\add($connexion, $titre, $resume, $texte, $image, $creatif);
@@ -73,7 +69,7 @@ function addAction(PDO $connexion) {
 
         \App\Models\TagsModel\addTagsToProjet($connexion, $id, $tagsSelectionnes);
 
-        header('Location: ?projets&id=' . $id);
+        header('Location: /CREATIFS/public/projects/' . $id . '/' . \Core\Helpers\slugify($titre) . '.html');
         exit;
     }
     global $content, $title;
@@ -139,7 +135,7 @@ function editAction(PDO $connexion) {
 
         \App\Models\TagsModel\updateTagsForProjet($connexion, $id, $tagsSelectionnes);
 
-        header('Location: ?projets&id=' . $id);
+        header('Location: /CREATIFS/public/projects/' . $id . '/' . \Core\Helpers\slugify($titre) . '.html');
         exit;
     }
 
