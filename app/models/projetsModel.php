@@ -30,3 +30,16 @@ function findOneById(PDO $connexion, int $id): array|false {
 
     return $rs->fetch(PDO::FETCH_ASSOC);
 }
+
+function add(PDO $connexion, string $titre, string $resume, string $texte, string $image, int $creatif): int {
+
+    $sql = "INSERT INTO projets
+            (titre, resume, texte, dateCreation, image, creatif)
+            VALUES (:titre, :resume, :texte, NOW(), :image, :creatif);";
+
+    $rs = $connexion->prepare($sql);
+
+    $rs->execute([':titre' => $titre, ':resume' => $resume, ':texte' => $texte, ':image' => $image, ':creatif' => $creatif]);
+
+    return (int) $connexion->lastInsertId();
+}

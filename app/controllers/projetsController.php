@@ -31,3 +31,53 @@ function indexAction(PDO $connexion) {
     include '../app/views/projets/index.php';
     $content = ob_get_clean();
 }
+
+function addAction(PDO $connexion) {
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+        include_once '../app/models/projetsModel.php';
+
+        $titre = $_POST['titre'];
+        $resume = $_POST['resume'];
+        $texte = $_POST['texte'];
+        $creatif = (int) $_POST['creatif'];
+
+        if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
+            echo "Erreur lors de l'envoi de l'image.";
+            exit;
+        }
+
+        $extension = pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION);
+        $image = uniqid() . '.' . $extension;
+
+        $type = $_FILES['image']['type'];
+
+        if (in_array($type, ['image/jpeg', 'image/png', 'image/webp'])) {
+
+            $destination = '../template/images/' . $image;
+
+            move_uploaded_file($_FILES['image']['tmp_name'], $destination);
+
+        } 
+        else {
+            echo "Le fichier envoyé n'est pas une image.";
+            exit;
+        }
+
+        $id = \App\Models\ProjetsModel\add($connexion, $titre, $resume, $texte, $image, $creatif);
+    }
+    global $content, $title;
+
+    $title = "Ajouter un projet";
+
+    include_once '../app/models/creatifsModel.php';
+    $creatifs = \App\Models\CreatifsModel\findAll($connexion);
+
+    include_once '../app/models/tagsModel.php';
+    $tags = \App\Models\TagsModel\findAll($connexion);
+
+    ob_start();
+    include '../app/views/projets/form.php';
+    $content = ob_get_clean();
+}

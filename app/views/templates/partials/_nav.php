@@ -25,17 +25,19 @@
             <li class="nav-item active">
               <a class="nav-link" href="index.html">Les projets</a>
             </li>
-            <li class="nav-item">
-              <a class="ct-btn ct-btn--primary ct-btn--sm" href="form.html">
-                <svg class="ct-scissors" style="width:16px;height:16px" viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="6" cy="6" r="2.6"></circle>
-                  <circle cx="6" cy="18" r="2.6"></circle>
-                  <line x1="20" y1="3" x2="8" y2="15.5"></line>
-                  <line x1="8" y1="8.5" x2="20" y2="21"></line>
-                </svg>
-                Nouveau projet
-              </a>
-            </li>
+            <?php if (!isset($_GET['form'])) : ?>
+              <li class="nav-item">
+                <a class="ct-btn ct-btn--primary ct-btn--sm" href="index.html">
+                  <svg class="ct-scissors" style="width:16px;height:16px" viewBox="0 0 24 24" aria-hidden="true">
+                    <circle cx="6" cy="6" r="2.6"></circle>
+                    <circle cx="6" cy="18" r="2.6"></circle>
+                    <line x1="20" y1="3" x2="8" y2="15.5"></line>
+                    <line x1="8" y1="8.5" x2="20" y2="21"></line>
+                  </svg>
+                  Nouveau projet
+                </a>
+              </li>
+            <?php endif; ?>
           </ul>
         </div>
       </div>
