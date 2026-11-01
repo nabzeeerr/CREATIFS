@@ -27,23 +27,29 @@
                 
             <!-- Pagination : 10 projets par page -->
             <nav aria-label="Navigation entre les pages de projets">
-            <ul class="pagination ct-pagination" style="justify-content: center">
-                <li class="page-item">
-                <a class="page-link" href="#">Précédent</a>
-                </li>
-                <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                <a class="page-link" href="#">2</a>
-                </li>
-                <li class="page-item">
-                <a class="page-link" href="#">3</a>
-                </li>
-                <li class="page-item">
-                <a class="page-link" href="#">Suivant</a>
-                </li>
-            </ul>
+                <ul class="pagination ct-pagination" style="justify-content: center">
+
+                    <?php if ($page > 1) : ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=<?php echo $page - 1; ?>">Précédent</a>
+                        </li>
+                    <?php endif; ?>
+
+                    <?php for ($i = 1; $i <= $nbPages; $i++) : ?>
+                        <li class="page-item <?php echo ($i === $page) ? 'active' : ''; ?>">
+                            <a class="page-link" href="?page=<?php echo $i; ?>">
+                                <?php echo $i; ?>
+                            </a>
+                        </li>
+                    <?php endfor; ?>
+
+                    <?php if ($page < $nbPages) : ?>
+                        <li class="page-item">
+                            <a class="page-link" href="?page=<?php echo $page + 1; ?>">Suivant</a>
+                        </li>
+                    <?php endif; ?>
+                    
+                </ul>
             </nav>
         </div>
 

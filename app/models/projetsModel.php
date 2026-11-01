@@ -3,18 +3,32 @@ namespace App\Models\ProjetsModel;
 
 use \PDO; 
 
-function findAll(PDO $connexion, int $limit = 10): array {
-    
+function findAll(PDO $connexion, int $page = 1): array {
+
+    $limit = 10;
+    $offset = ($page - 1) * $limit;
+
     $sql = "SELECT projets.*, creatifs.pseudo
             FROM projets
             JOIN creatifs ON projets.creatif = creatifs.id
             ORDER BY projets.id ASC
-            LIMIT :limit;";
+            LIMIT :limit OFFSET :offset;";
+
     $rs = $connexion->prepare($sql);
     $rs->bindValue(':limit', $limit, PDO::PARAM_INT);
+    $rs->bindValue(':offset', $offset, PDO::PARAM_INT);
     $rs->execute();
-    
+
     return $rs->fetchAll(PDO::FETCH_ASSOC);
+}
+
+function countAll(PDO $connexion): int {
+
+    $sql = "SELECT COUNT(*) FROM projets;";
+    $rs = $connexion->prepare($sql);
+    $rs->execute();
+
+    return (int) $rs->fetchColumn();
 }
 
 function findOneById(PDO $connexion, int $id): array|false {
