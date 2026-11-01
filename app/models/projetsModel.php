@@ -8,7 +8,7 @@ function findAll(PDO $connexion): array {
     $sql = "SELECT projets.*, creatifs.pseudo
             FROM projets
             JOIN creatifs ON projets.creatif = creatifs.id
-            ORDER BY projets.dateCreation DESC
+            ORDER BY projets.id ASC
             LIMIT 10;";
     return $connexion->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }

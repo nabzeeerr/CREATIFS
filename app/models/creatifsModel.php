@@ -9,7 +9,7 @@ function findAll(PDO $connexion): array {
             FROM creatifs
             LEFT JOIN projets ON creatifs.id = projets.creatif
             GROUP BY creatifs.id
-            ORDER BY creatifs.id DESC
+            ORDER BY creatifs.id ASC
             LIMIT 4;";
     return $connexion->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
