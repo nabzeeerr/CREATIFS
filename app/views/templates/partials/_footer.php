@@ -1,3 +1,4 @@
+<!-- Pied de page du site -->
 <footer class="py-5 ct-footer">
       <div class="container">
         <p class="m-0 text-center text-white">

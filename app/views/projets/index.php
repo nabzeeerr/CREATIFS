@@ -3,24 +3,28 @@
     <!-- Colonne principale -->
     <div class="col-lg-8">
 
+        <!-- Affichage des infos du projet -->
         <h1><?php echo $projet['titre']; ?></h1>
 
         <p class="ct-byline">
             par <a href="#"><?php echo $projet['pseudo']; ?></a>
-            · <?php echo $projet['dateCreation']; ?>
+            · <?php echo \Core\Helpers\formatDate($projet['dateCreation']); ?>
         </p>
 
-        <a href="/CREATIFS/public/?edit&id=<?php echo $projet['id']; ?>"
+        <!-- Boutons de modification -->
+        <a href="/CREATIFS/public/projects/<?php echo $projet['id']; ?>/<?php echo \Core\Helpers\slugify($projet['titre']); ?>/edit/form.html"
             class="ct-btn ct-btn--primary">
             Éditer le projet
         </a>
 
-        <a href="/CREATIFS/public/?delete&id=<?php echo $projet['id']; ?>"
+        <!-- Boutons de suppression -->
+        <a href="/CREATIFS/public/projects/delete/<?php echo $projet['id']; ?>/<?php echo \Core\Helpers\slugify($projet['titre']); ?>.html"
             class="ct-btn ct-btn--danger"
             onclick="return confirm('Tu es sûr de vouloir supprimer ce projet ?');">
             Supprimer le projet
         </a>
 
+        <!-- Affichage de l'image et du contenu du projet -->
         <div style="margin-top: 1.5rem;"></div>
         <article class="ct-card">
             <div class="row">
@@ -43,6 +47,7 @@
 
                     <hr />
 
+                    <!-- Affichage des tags associés au projet -->
                     <ul class="ct-tags">
                         <?php foreach ($tagsProjet as $tag) : ?>
                             <li>

@@ -3,6 +3,7 @@ namespace App\Models\ProjetsModel;
 
 use \PDO; 
 
+// Je récupère les projets d'une page avec leur créatif associé
 function findAll(PDO $connexion, int $page = 1): array {
 
     $limit = 10;
@@ -22,6 +23,7 @@ function findAll(PDO $connexion, int $page = 1): array {
     return $rs->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// Je compte le nombre total de projets
 function countAll(PDO $connexion): int {
 
     $sql = "SELECT COUNT(*) FROM projets;";
@@ -31,6 +33,7 @@ function countAll(PDO $connexion): int {
     return (int) $rs->fetchColumn();
 }
 
+// Je récupère un projet grâce à son identifiant
 function findOneById(PDO $connexion, int $id): array|false {
 
     $sql = "SELECT projets.*, creatifs.pseudo
@@ -45,6 +48,7 @@ function findOneById(PDO $connexion, int $id): array|false {
     return $rs->fetch(PDO::FETCH_ASSOC);
 }
 
+// J'ajoute un nouveau projet dans la base de données
 function add(PDO $connexion, string $titre, string $resume, string $texte, string $image, int $creatif): int {
 
     $sql = "INSERT INTO projets
@@ -58,6 +62,7 @@ function add(PDO $connexion, string $titre, string $resume, string $texte, strin
     return (int) $connexion->lastInsertId();
 }
 
+// Je modifie un projet existant
 function update(PDO $connexion, int $id, string $titre, string $resume, string $texte, string $image, int $creatif): void {
 
     $sql = "UPDATE projets
@@ -73,6 +78,7 @@ function update(PDO $connexion, int $id, string $titre, string $resume, string $
     $rs->execute([':titre' => $titre, ':resume' => $resume, ':texte' => $texte, ':image' => $image, ':creatif' => $creatif, ':id' => $id]);
 }
 
+// Je supprime un projet et ses associations avec les tags
 function delete(PDO $connexion, int $id): void {
 
     // Supprimer les associations avec les tags

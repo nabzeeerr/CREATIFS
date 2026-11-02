@@ -3,6 +3,7 @@ namespace App\Models\TagsModel;
 
 use \PDO;
 
+// Je récupère tous les tags
 function findAll(PDO $connexion): array {
 
     $sql = "SELECT *
@@ -11,6 +12,7 @@ function findAll(PDO $connexion): array {
     return $connexion->query($sql)->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// Je récupère les tags associés à un projet
 function findAllByProjet(PDO $connexion, int $idProjet): array {
 
     $sql = "SELECT tags.*
@@ -26,6 +28,7 @@ function findAllByProjet(PDO $connexion, int $idProjet): array {
     return $rs->fetchAll(PDO::FETCH_ASSOC);
 }
 
+// J'associe les tags sélectionnés à un projet
 function addTagsToProjet(PDO $connexion, int $idProjet, array $tags): void {
 
     $sql = "INSERT INTO projets_has_tags (projet, tag)
@@ -38,6 +41,7 @@ function addTagsToProjet(PDO $connexion, int $idProjet, array $tags): void {
     }
 }
 
+// Je remplace les tags associés à un projet
 function updateTagsForProjet(PDO $connexion, int $idProjet, array $tags): void {
 
     $sql = "DELETE FROM projets_has_tags WHERE projet = :projet";

@@ -3,29 +3,30 @@
     <div class="row">        
         <!-- Colonne principale -->
         <div class="col-lg-8">
-            <!-- Projet 1 — extrait = résumé (champ `resume`) tronqué par truncate(100) -->
+            <!-- Affichage des projets -->
             <?php foreach($projets as $projet) : ?>
                 <article class="ct-card">
                     <div class="row">
-                    <div class="col-md-4">
-                        <a href="projects/<?php echo $projet['id']; ?>/<?php echo \Core\Helpers\slugify($projet['titre']); ?>.html">
-                        <img class="img-fluid mb-3 mb-md-0" src="/CREATIFS/template/images/<?php echo $projet['image'];?>" alt="<?php echo $projet['titre'];?>" />
-                        </a>
-                    </div>
-                    <div class="col-md-8">
-                        <h3><a href="projects/<?php echo $projet['id']; ?>/<?php echo \Core\Helpers\slugify($projet['titre']); ?>.html"><?php echo $projet['titre'];?></a></h3>
-                        <p class="ct-byline">par <a href="#"><?php echo $projet['pseudo']; ?></a> · <?php echo $projet['dateCreation']; ?></p>
-                        <p>
-                            <?php echo \Core\Helpers\truncate($projet['resume']);?>
-                        </p>
-                        <a class="ct-btn ct-btn--primary ct-btn--sm" href="projects/<?php echo $projet['id']; ?>/<?php echo \Core\Helpers\slugify($projet['titre']); ?>.html">Voir le projet</a>
-                    </div>
+                        <!-- Affichage des infos du projet -->
+                        <div class="col-md-4">
+                            <a href="projects/<?php echo $projet['id']; ?>/<?php echo \Core\Helpers\slugify($projet['titre']); ?>.html">
+                            <img class="img-fluid mb-3 mb-md-0" src="/CREATIFS/template/images/<?php echo $projet['image'];?>" alt="<?php echo $projet['titre'];?>" />
+                            </a>
+                        </div>
+                        <div class="col-md-8">
+                            <h3><a href="projects/<?php echo $projet['id']; ?>/<?php echo \Core\Helpers\slugify($projet['titre']); ?>.html"><?php echo $projet['titre'];?></a></h3>
+                            <p class="ct-byline">par <a href="#"><?php echo $projet['pseudo']; ?></a> · <?php echo \Core\Helpers\formatDate($projet['dateCreation']); ?></p>
+                            <p>
+                                <?php echo \Core\Helpers\truncate($projet['resume']);?>
+                            </p>
+                            <a class="ct-btn ct-btn--primary ct-btn--sm" href="projects/<?php echo $projet['id']; ?>/<?php echo \Core\Helpers\slugify($projet['titre']); ?>.html">Voir le projet</a>
+                        </div>
                     </div>
                 </article>
             <?php endforeach; ?>
 
                 
-            <!-- Pagination : 10 projets par page -->
+            <!-- Affichage de la pagination -->
             <nav aria-label="Navigation entre les pages de projets">
                 <ul class="pagination ct-pagination" style="justify-content: center">
 
@@ -53,11 +54,9 @@
             </nav>
         </div>
 
-        <!-- Colonne latérale -->
+        <!-- Affichage de la sidebar -->
         <div class="col-lg-4">
             <?php include '../app/views/templates/partials/_aside.php'; ?>
         </div>
     </div>
-    <!-- /.row -->
 </div>
-<!-- /.container -->

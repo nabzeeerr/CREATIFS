@@ -1,5 +1,7 @@
-<!-- Creatifs side -->
+<!-- Affichage du titre de la section -->
 <h5 class="ct-side-card__head">Les créa'tifs</h5>
+
+<!-- Liste des créatifs et du nombre de projets associés -->
 <div class="ct-side-card__body">
     <ul class="ct-creatif-list">
         <?php foreach($creatifs as $creatif) : ?>

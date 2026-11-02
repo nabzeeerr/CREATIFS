@@ -3,4 +3,20 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
+# Suppression
+RewriteRule ^projects/delete/([0-9]+)/([a-z0-9-]+)\.html$ index.php?delete&id=$1 [L,QSA]
+
+# Formulaire d'ajout
+RewriteRule ^projects/add/form\.html$ index.php?form [L,QSA]
+
+# Insertion d'un projet
+RewriteRule ^projects/add/insert\.html$ index.php?insert [L,QSA]
+
+# Formulaire de modification
+RewriteRule ^projects/([0-9]+)/([a-z0-9-]+)/edit/form\.html$ index.php?edit&id=$1 [L,QSA]
+
+# Mise à jour
+RewriteRule ^projects/([0-9]+)/([a-z0-9-]+)/edit/update\.html$ index.php?update&id=$1 [L,QSA]
+
+# Détail d'un projet
 RewriteRule ^projects/([0-9]+)/([a-z0-9-]+)\.html$ index.php?projets&id=$1 [L,QSA]

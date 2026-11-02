@@ -1,43 +1,19 @@
 <?php
 // ROUTER PRINCIPAL
 
-// ROUTE DES PROJETS 
-// PATTERN : /?projets&id=[id]
-// CTRL : projetsController
-// ACTION : indexAction
-if (isset($_GET['projets']) && isset($_GET['id'])) :
-    include_once '../app/controllers/projetsController.php';
-    \App\Controllers\ProjetsController\indexAction($connexion);
+// Je vérifie si une route concerne les projets
+if (
+    isset($_GET['projets']) ||
+    isset($_GET['form']) ||
+    isset($_GET['insert']) ||
+    isset($_GET['edit']) ||
+    isset($_GET['update']) ||
+    isset($_GET['delete'])
+) :
+    include_once '../app/routers/projetsRouter.php';
 
-// ROUTE DU FORM 
-// PATTERN : /?form
-// CTRL : ProjectsController
-// ACTION : addAction
-elseif (isset($_GET['form'])) :
-    include_once '../app/controllers/projetsController.php';
-    \App\Controllers\ProjetsController\addAction($connexion);
+else :
+    // Sinon, je charge le router des pages
+    include_once '../app/routers/pagesRouter.php';
 
-// ROUTE DE MODIFICATION
-// PATTERN : /?edit&id=[id]
-// CTRL : ProjetsController
-// ACTION : editAction
-elseif (isset($_GET['edit'])) :
-    include_once '../app/controllers/projetsController.php';
-    \App\Controllers\ProjetsController\editAction($connexion);
-
-// ROUTE DE SUPPRESSION
-// PATTERN : /?delete&id=[id]
-// CTRL : ProjetsController
-// ACTION : deleteAction
-elseif (isset($_GET['delete'])) :
-    include_once '../app/controllers/projetsController.php';
-    \App\Controllers\ProjetsController\deleteAction($connexion);
-
-// ROUTE PAR DEFAUT
-// PATTERN: /
-// CTRL: pagesController
-// ACTION: homeAction
-else : 
-    include_once '../app/controllers/pagesController.php';
-    \App\Controllers\PagesController\homeAction($connexion);
 endif;

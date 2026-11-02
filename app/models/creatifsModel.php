@@ -5,6 +5,7 @@ use \PDO;
 
 function findAll(PDO $connexion, int $limit = 4): array {
 
+    // Je récupère les créatifs avec le nombre de projets associés
     $sql = "SELECT creatifs.*, COUNT(projets.id) AS nbProjets
             FROM creatifs
             LEFT JOIN projets ON creatifs.id = projets.creatif

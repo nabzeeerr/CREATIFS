@@ -1,3 +1,4 @@
+<!-- Informations générales de la page -->
 <meta charset="utf-8" />
     <meta
       name="viewport"
@@ -6,6 +7,7 @@
     <meta name="description" content="CREA'TIFS - portfolio capillaire, liste des projets" />
     <meta name="author" content="" />
 
+    <!-- Titre dynamique de la page -->
     <title>CREA'TIFS - Design capill'Hair - <?php echo $title; ?></title>
 
     <!-- Bootstrap core CSS -->
