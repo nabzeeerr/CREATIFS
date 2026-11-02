@@ -26,16 +26,20 @@ function truncate(string $string, int $lg_max = 100): string {
     return $string;
 }
     
+// Je transforme un texte en slug pour les URL
 function slugify(string $string): string {
 
+    // Je convertis le texte en minuscules
     $string = strtolower($string);
 
+    // Je remplace les espaces et certains signes par des tirets
     $string = str_replace(
         [' ', '.', '!', '?', "'", ';'],
         '-',
         $string
     );
 
+    // Je remplace les caractères accentués par leur équivalent sans accent
     $string = str_replace(
         ['é', 'è', 'ê', 'à', 'ç', 'â'],
         ['e', 'e', 'e', 'a', 'c', 'a'],
@@ -45,8 +49,10 @@ function slugify(string $string): string {
     return $string;
 }
 
+// Je formate une date en français sans afficher l'heure
 function formatDate(string $date): string {
 
+    // Je définis les noms des mois en français
     $mois = [
         1 => 'janvier',
         2 => 'février',
@@ -62,8 +68,10 @@ function formatDate(string $date): string {
         12 => 'décembre'
     ];
 
+    // Je convertis la date en timestamp
     $timestamp = strtotime($date);
 
+    
     return date('j', $timestamp) . ' '
         . $mois[(int) date('n', $timestamp)] . ' '
         . date('Y', $timestamp);
